@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Ndao Hihira · Cabaret Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fef7e8 0%, #fff3e0 100%);
+            font-family: system-ui, 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+            color: #2e241f;
+            padding: 20px 16px 40px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* MAIN CARD */
+        .hero-card {
+            background: rgba(255, 250, 240, 0.96);
+            border-radius: 48px 32px 48px 32px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 28px;
+            border: 1px solid rgba(218, 165, 92, 0.4);
+        }
+
+        .hero-section {
+            background: #fef5e6;
+            padding: 28px 20px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ffe0b5;
+        }
+
+        .tongasoa {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #c97e2c, #b45f2b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .welcome-sub {
+            font-size: 0.9rem;
+            color: #a1652c;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Image container - remplace le QR code */
+        .team-image-container {
+            background: white;
+            padding: 12px;
+            border-radius: 36px;
+            display: inline-block;
+            margin: 8px auto 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-photo {
+            width: 260px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 28px;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.2s ease;
+        }
+
+        .team-photo:hover {
+            transform: scale(1.01);
+        }
+
+        .image-caption {
+            font-size: 12px;
+            margin-top: 12px;
+            color: #b87c3a;
+            font-weight: 500;
+            background: rgba(255,245,230,0.9);
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 40px;
+        }
+
+        .thanks-message {
+            background: #fff6ea;
+            padding: 20px 20px 24px;
+            border-radius: 32px;
+            margin: 16px 20px 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: #3b2a1f;
+            border: 1px solid #ffe1b3;
+            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.05);
+        }
+
+        /* Boutons flottants / options qui montent */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            margin: 28px 0 32px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .btn-option {
+            background: #fff6ea;
+            backdrop-filter: blur(2px);
+            border: 1px solid #e7caa2;
+            border-radius: 60px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #7b4a2a;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            background: #ffffffd9;
+        }
+
+        .btn-option i {
+            font-style: normal;
+            font-size: 1.2rem;
+        }
+
+        .btn-option:active {
+            transform: scale(0.96);
+            background: #f5e5cf;
+            border-color: #c18746;
+        }
+
+        .btn-option:hover {
+            background: #faeedc;
+            border-color: #d49c54;
+            transform: translateY(-2px);
+        }
+
+        /* panneaux coulissants (montent depuis le bas) */
+        .slide-panel {
+            background: #ffffffea;
+            backdrop-filter: blur(8px);
+            border-radius: 44px 44px 32px 32px;
+            margin: 12px 0 28px;
+            padding: 20px 22px 26px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ffddb0;
+            transition: all 0.4s ease-out;
+        }
+
+        .panel-hidden {
+            display: none;
+        }
+
+        .panel-enter {
+            animation: slideUpFade 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            border-left: 6px solid #e2a14e;
+            padding-left: 16px;
+            margin-bottom: 20px;
+            color: #4f321b;
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dashed #eedbbc;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .dish-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #754e2c;
+        }
+
+        .dish-price {
+            font-weight: 700;
+            color: #b5622a;
+            background: #fff1e0;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        .menu-desc {
+            font-size: 0.75rem;
+            color: #b68148;
+            margin-top: 4px;
+            width: 100%;
+        }
+
+        .program-step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .time-badge {
+            min-width: 70px;
+            background: #f2e2ce;
+            border-radius: 60px;
+            text-align: center;
+            padding: 5px 0;
+            font-weight: 700;
+            color: #aa6d34;
+            font-size: 0.8rem;
+        }
+
+        .program-desc {
+            font-weight: 500;
+            color: #3b2a1f;
+            flex: 1;
+        }
+
+        /* partenaires : 5 logos avec images réelles */
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0 12px;
+        }
+
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            background: #fff9f0;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+            border: 1px solid #ebd2b0;
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 32px;
+            transition: transform 0.2s;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .partner-logo:hover img {
+            transform: scale(1.02);
+        }
+
+        .partner-name {
+            font-size: 10px;
+            font-weight: 600;
+            color: #a86f38;
+            text-align: center;
+            margin-top: 6px;
+            display: block;
+        }
+
+        .partner-item {
+            text-align: center;
+        }
+
+        /* credit */
+        .credit-footer {
+            text-align: center;
+            margin-top: 38px;
+            padding-top: 18px;
+            border-top: 2px dotted #f0dbbc;
+            font-size: 0.8rem;
+            color: #a0693a;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .credit-footer strong {
+            font-weight: 800;
+            background: #fff0dd;
+            padding: 4px 12px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 6px;
+            color: #b35f1c;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px 12px 36px;
+            }
+            .btn-option {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+            .partner-logo {
+                width: 70px;
+                height: 70px;
+            }
+            .panel-title {
+                font-size: 1.4rem;
+            }
+            .team-photo {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Carte principale avec l'image de l'équipe (remplace le QR) - le titre NDAO HIHIRA est déjà dans l'image -->
+    <div class="hero-card">
+        <div class="hero-section">
+            <div class="tongasoa">✨ TONGASOA ✨</div>
+            <div class="welcome-sub">Miarahaba anareo !</div>
+            <div class="team-image-container">
+                <!-- IMAGE DE L'ÉQUIPE - Remplacez le src par le chemin de votre image -->
+                <img class="team-photo" src="f40b0245-560b-4b16-9e83-c2ca79d7a22e.jfif" alt="Équipe Ndao Hihira">
+            </div>
+            <div class="image-caption">
+                📸 Notre équipe organisatrice
+            </div>
+        </div>
+        <div class="thanks-message">
+            <strong>❤️ MISAOTRA BETSAKA ! ❤️</strong><br>
+            Nous tenons à vous adresser nos sincères remerciements pour votre présence et votre soutien lors de notre cabaret <strong>Ndao Hihira hiaraka aminay</strong>.<br>
+            Votre participation a grandement contribué à la réussite de cet événement.<br>
+            Grâce à vous, cette soirée a été un moment inoubliable, rempli de partage, de talent et de convivialité.
+        </div>
+    </div>
+
+    <!-- Options en bas qui montent (boutons) -->
+    <div class="action-buttons">
+        <div class="btn-option" data-panel="menuPanel">
+            <i>🍽️</i> Plats du jour
+        </div>
+        <div class="btn-option" data-panel="programPanel">
+            <i>📅</i> Programme
+        </div>
+        <div class="btn-option" data-panel="partnersPanel">
+            <i>🤝</i> Partenaires
+        </div>
+    </div>
+
+    <!-- PANEL 1 : MENU (plats du jour) -->
+    <div id="menuPanel" class="slide-panel panel-hidden">
+        <div class="panel-title">🍛 Plats du jour</div>
+        <div class="menu-list">
+            <div>
+                <div class="menu-item">
+                    <span class="dish-name">Ravitoto sy henakisoa</span>
+                    <span class="dish-price">12 000 Ar</span>
+                </div>
+                <div class="menu-desc">Feuilles de manioc pilées, poitrine fumée, épices douces</div>
+            </div>
+            <div>
+                <div class="menu-item">
+                    <span class="dish-name">Romazava vary</span>
+                    <span class="dish-price">10 000 Ar</span>
+                </div>
+                <div class="menu-desc">Bœuf brésilienne, brèdes mafana, accompagné de riz parfumé</div>
+            </div>
+            <div>
+                <div class="menu-item">
+                    <span class="dish-name">Akoho sy voanio</span>
+                    <span class="dish-price">11 500 Ar</span>
+                </div>
+                <div class="menu-desc">Poulet mijoté au lait de coco, gingembre et combava</div>
+            </div>
+            <div>
+                <div class="menu-item">
+                    <span class="dish-name">Lasary ananas & mangahazo</span>
+                    <span class="dish-price">4 500 Ar</span>
+                </div>
+                <div class="menu-desc">Salade épicée d'ananas et de manioc croustillant</div>
+            </div>
+            <div>
+                <div class="menu-item">
+                    <span class="dish-name">Mofo gasy & miel</span>
+                    <span class="dish-price">3 000 Ar</span>
+                </div>
+                <div class="menu-desc">Beignet malgache, miel local, douceur du soir</div>
+            </div>
+        </div>
+        <div style="margin-top: 16px; font-size: 0.7rem; text-align: center; color: #d69c56;">✨ Menu spécial Cabaret ✨</div>
+    </div>
+
+    <!-- PANEL 2 : PROGRAMME -->
+    <div id="programPanel" class="slide-panel panel-hidden">
+        <div class="panel-title">🎤 Programme de la soirée</div>
+        <div class="program-step">
+            <div class="time-badge">18:30</div>
+            <div class="program-desc"><strong>Accueil & Cocktail</strong> — ouverture des portes, ambiance musicale par DJ Niavo</div>
+        </div>
+        <div class="program-step">
+            <div class="time-badge">19:15</div>
+            <div class="program-desc"><strong>Fanentanana</strong> — discours d’ouverture par l’équipe organisatrice M1010JSS1 G2</div>
+        </div>
+        <div class="program-step">
+            <div class="time-badge">19:45</div>
+            <div class="program-desc"><strong>Première partie : Hira gasy & Talents</strong> — groupe « Vako-drazana »</div>
+        </div>
+        <div class="program-step">
+            <div class="time-badge">20:45</div>
+            <div class="program-desc"><strong>Dîner-spectacle</strong> — découverte des plats du jour, animation interactive</div>
+        </div>
+        <div class="program-step">
+            <div class="time-badge">21:45</div>
+            <div class="program-desc"><strong>DJ set & surprises</strong> — Ambiance jusqu’à minuit, clôture avec feu d’artifice</div>
+        </div>
+        <div style="background:#fcf1e4; border-radius: 30px; padding: 12px; margin-top: 8px; text-align:center; font-size:0.8rem;">
+            🎶 <strong>Ndao Hihira hiaraka aminay</strong> — une soirée riche en émotions
+        </div>
+    </div>
+
+    <!-- PANEL 3 : PARTENAIRES (5 logos avec images) -->
+    <div id="partnersPanel" class="slide-panel panel-hidden">
+        <div class="panel-title">🤝 Nos partenaires</div>
+        <div class="partners-grid">
+            <!-- Partenaire 1 - Remplacez le src par le chemin exact de votre image -->
+            <div class="partner-item">
+                <div class="partner-logo">
+                    <img src="f756233f-6933-456e-ba48-e244b64c376b.jfif" alt="THB Gazety">
+                </div>
+                <div class="partner-name">Resto DUO</div>
+            </div>
+            <!-- Partenaire 2 -->
+            <div class="partner-item">
+                <div class="partner-logo">
+                    <img src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" alt="Telma Event">
+                </div>
+                <div class="partner-name">enfi</div>
+            </div>
+            <!-- Partenaire 3 -->
+            <div class="partner-item">
+                <div class="partner-logo">
+                    <img src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" alt="Vins & Co">
+                </div>
+                <div class="partner-name">F.I.A.VA.MA</div>
+            </div>
+            <!-- Partenaire 4 -->
+            <div class="partner-item">
+                <div class="partner-logo">
+                    <img src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" alt="Mada Music">
+                </div>
+                <div class="partner-name">JO. ANDREW</div>
+            </div>
+            <!-- Partenaire 5 -->
+            <div class="partner-item">
+                <div class="partner-logo">
+                    <img src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" alt="Resto Kanto">
+                </div>
+                <div class="partner-name">FAH SOUND</div>
+            </div>
+        </div>
+        <div style="margin-top: 22px; text-align: center; font-size: 0.75rem; color: #b27d48; background:#fef1e2; border-radius: 36px; padding: 8px;">
+            🌟 Un grand merci à tous nos sponsors pour leur soutien précieux 🌟
+        </div>
+    </div>
+
+    <!-- Crédit équipe organisatrice -->
+    <div class="credit-footer">
+        <span>✨ Équipe organisatrice ✨</span><br>
+        <strong>M1010JSS1 G2</strong><br>
+        <span style="font-size: 0.7rem;">Cabaret Ndao Hihira — Fièrement organisé pour vous</span>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Récupération des panneaux et des boutons
+        const menuPanel = document.getElementById('menuPanel');
+        const programPanel = document.getElementById('programPanel');
+        const partnersPanel = document.getElementById('partnersPanel');
+        
+        const allPanels = [menuPanel, programPanel, partnersPanel];
+        
+        // fermer tous les panneaux
+        function hideAllPanels() {
+            allPanels.forEach(panel => {
+                if (panel) {
+                    panel.classList.add('panel-hidden');
+                    panel.classList.remove('panel-enter');
+                }
+            });
+        }
+        
+        // afficher un panel spécifique avec animation smooth
+        function showPanel(panelToShow) {
+            if (!panelToShow) return;
+            const isCurrentlyVisible = !panelToShow.classList.contains('panel-hidden');
+            
+            if (isCurrentlyVisible) {
+                panelToShow.classList.add('panel-hidden');
+                panelToShow.classList.remove('panel-enter');
+            } else {
+                hideAllPanels();
+                panelToShow.classList.remove('panel-hidden');
+                panelToShow.classList.remove('panel-enter');
+                void panelToShow.offsetWidth;
+                panelToShow.classList.add('panel-enter');
+            }
+        }
+        
+        // gestion des clics sur les boutons
+        const btnMenu = document.querySelector('[data-panel="menuPanel"]');
+        const btnProgram = document.querySelector('[data-panel="programPanel"]');
+        const btnPartners = document.querySelector('[data-panel="partnersPanel"]');
+        
+        if (btnMenu) {
+            btnMenu.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPanel(menuPanel);
+            });
+        }
+        if (btnProgram) {
+            btnProgram.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPanel(programPanel);
+            });
+        }
+        if (btnPartners) {
+            btnPartners.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPanel(partnersPanel);
+            });
+        }
+        
+        console.log("Site cabaret prêt — Ndao Hihira");
+    })();
+</script>
+</body>
+</html>
