@@ -761,9 +761,8 @@
         const zoomClose = document.querySelector('.zoom-modal-close');
         
         // Fonction pour ouvrir le modal avec l'image cliquée
-        function openZoom(imgSrc, imgName) {
+        function openZoom(imgSrc) {
             zoomImage.src = imgSrc;
-            zoomCaption.textContent = imgName;
             zoomModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -780,9 +779,8 @@
             item.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const imgSrc = item.getAttribute('data-img-src');
-                const imgName = item.getAttribute('data-name');
                 if (imgSrc) {
-                    openZoom(imgSrc, imgName);
+                    openZoom(imgSrc);
                 }
             });
         });
