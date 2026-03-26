@@ -315,6 +315,7 @@
             border: 1px solid #ebd2b0;
             overflow: hidden;
             padding: 6px;
+            cursor: pointer;
         }
 
         .partner-logo img {
@@ -323,6 +324,7 @@
             object-fit: contain;
             border-radius: 32px;
             transition: transform 0.2s;
+            pointer-events: none;
         }
 
         .partner-logo:hover {
@@ -341,10 +343,102 @@
             text-align: center;
             margin-top: 6px;
             display: block;
+            cursor: pointer;
         }
 
         .partner-item {
             text-align: center;
+            cursor: pointer;
+        }
+
+        /* Modal de zoom */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .zoom-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .zoom-modal-img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 215, 150, 0.5);
+        }
+
+        .zoom-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 1001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .zoom-modal-close:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .zoom-modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            margin: 0 auto;
+            width: fit-content;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
         }
 
         .credit-footer {
@@ -392,6 +486,17 @@
             }
             .program-desc {
                 font-size: 0.85rem;
+            }
+            .zoom-modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+            .zoom-modal-caption {
+                font-size: 0.8rem;
+                bottom: 10px;
             }
         }
     </style>
@@ -537,35 +642,35 @@
         </div>
     </div>
 
-    <!-- PANEL 3 : PARTENAIRES -->
+    <!-- PANEL 3 : PARTENAIRES avec zoom au clic -->
     <div id="partnersPanel" class="slide-panel panel-hidden">
         <div class="panel-title">🤝 Nos partenaires</div>
         <div class="partners-grid">
-            <div class="partner-item">
+            <div class="partner-item" data-img-src="f756233f-6933-456e-ba48-e244b64c376b.jfif" data-name="Resto DUO">
                 <div class="partner-logo">
                     <img src="f756233f-6933-456e-ba48-e244b64c376b.jfif" alt="Resto DUO">
                 </div>
                 <div class="partner-name">Resto DUO</div>
             </div>
-            <div class="partner-item">
+            <div class="partner-item" data-img-src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" data-name="enfi">
                 <div class="partner-logo">
                     <img src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" alt="enfi">
                 </div>
                 <div class="partner-name">enfi</div>
             </div>
-            <div class="partner-item">
+            <div class="partner-item" data-img-src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" data-name="F.I.A.VA.MA">
                 <div class="partner-logo">
                     <img src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" alt="F.I.A.VA.MA">
                 </div>
                 <div class="partner-name">F.I.A.VA.MA</div>
             </div>
-            <div class="partner-item">
+            <div class="partner-item" data-img-src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" data-name="JO. ANDREW">
                 <div class="partner-logo">
                     <img src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" alt="JO. ANDREW">
                 </div>
                 <div class="partner-name">JO. ANDREW</div>
             </div>
-            <div class="partner-item">
+            <div class="partner-item" data-img-src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" data-name="FAH SOUND">
                 <div class="partner-logo">
                     <img src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" alt="FAH SOUND">
                 </div>
@@ -581,6 +686,15 @@
         <span>✨ Équipe organisatrice ✨</span><br>
         <strong>M1010JSS1 G2</strong><br>
         <span style="font-size: 0.7rem;">Cabaret Ndao Hihira · 28 Mars 2025 · Fièrement organisé pour vous</span>
+    </div>
+</div>
+
+<!-- Modal de zoom pour les images des partenaires -->
+<div id="zoomModal" class="zoom-modal">
+    <div class="zoom-modal-close">&times;</div>
+    <div class="zoom-modal-content">
+        <img id="zoomImage" class="zoom-modal-img" src="" alt="Logo partenaire">
+        <div id="zoomCaption" class="zoom-modal-caption"></div>
     </div>
 </div>
 
@@ -640,7 +754,61 @@
             });
         }
         
-        console.log("Site cabaret prêt — Ndao Hihira — 28 Mars 2025");
+        // Gestion du zoom pour les images des partenaires
+        const zoomModal = document.getElementById('zoomModal');
+        const zoomImage = document.getElementById('zoomImage');
+        const zoomCaption = document.getElementById('zoomCaption');
+        const zoomClose = document.querySelector('.zoom-modal-close');
+        
+        // Fonction pour ouvrir le modal avec l'image cliquée
+        function openZoom(imgSrc, imgName) {
+            zoomImage.src = imgSrc;
+            zoomCaption.textContent = imgName;
+            zoomModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Fonction pour fermer le modal
+        function closeZoom() {
+            zoomModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Ajouter les écouteurs d'événements sur chaque partenaire
+        const partnerItems = document.querySelectorAll('.partner-item');
+        partnerItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const imgSrc = item.getAttribute('data-img-src');
+                const imgName = item.getAttribute('data-name');
+                if (imgSrc) {
+                    openZoom(imgSrc, imgName);
+                }
+            });
+        });
+        
+        // Fermer le modal au clic sur le bouton de fermeture
+        if (zoomClose) {
+            zoomClose.addEventListener('click', closeZoom);
+        }
+        
+        // Fermer le modal au clic sur l'arrière-plan
+        if (zoomModal) {
+            zoomModal.addEventListener('click', (e) => {
+                if (e.target === zoomModal) {
+                    closeZoom();
+                }
+            });
+        }
+        
+        // Fermer le modal avec la touche Echap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && zoomModal.classList.contains('active')) {
+                closeZoom();
+            }
+        });
+        
+        console.log("Site cabaret prêt — Ndao Hihira — 28 Mars 2025 — Zoom partenaires activé");
     })();
 </script>
 </body>
