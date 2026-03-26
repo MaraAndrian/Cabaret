@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Ndao Hihira · Cabaret Event · 28 Mars</title>
+    <title>Ndao Hihira · Cabaret · 28 Mars 2025</title>
     <style>
         * {
             margin: 0;
@@ -63,26 +63,26 @@
             letter-spacing: 1px;
         }
 
-        /* Date spéciale */
+        /* Date spéciale - 28 MARS bien visible */
         .event-date {
-            background: #e2a14e20;
+            background: #e2a14e30;
             display: inline-block;
-            padding: 6px 16px;
+            padding: 8px 20px;
             border-radius: 40px;
-            margin-top: 8px;
+            margin-top: 12px;
             margin-bottom: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #b5622a;
-            backdrop-filter: blur(4px);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #b54e1a;
+            border: 1px solid #e2a14e;
         }
 
-        .event-date i {
-            font-style: normal;
+        .event-date span {
+            font-size: 1rem;
             margin-right: 6px;
         }
 
-        /* Image container - remplace le QR code */
+        /* Image container */
         .team-image-container {
             background: white;
             padding: 12px;
@@ -130,7 +130,7 @@
             box-shadow: 0 6px 12px -8px rgba(0,0,0,0.05);
         }
 
-        /* Boutons flottants / options qui montent */
+        /* Boutons flottants */
         .action-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -176,7 +176,7 @@
             transform: translateY(-2px);
         }
 
-        /* panneaux coulissants (montent depuis le bas) */
+        /* Panneaux coulissants */
         .slide-panel {
             background: #ffffffea;
             backdrop-filter: blur(8px);
@@ -292,7 +292,7 @@
             margin-bottom: 4px;
         }
 
-        /* partenaires : 5 logos avec images réelles */
+        /* Partenaires */
         .partners-grid {
             display: flex;
             flex-wrap: wrap;
@@ -347,7 +347,7 @@
             text-align: center;
         }
 
-        /* credit */
+        /* Credit */
         .credit-footer {
             text-align: center;
             margin-top: 38px;
@@ -394,49 +394,52 @@
             .program-desc {
                 font-size: 0.85rem;
             }
+            .event-date {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+            }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- Carte principale avec l'image de l'équipe - le titre NDAO HIHIRA est déjà dans l'image -->
+    <!-- Carte principale avec l'image de l'équipe -->
     <div class="hero-card">
         <div class="hero-section">
             <div class="tongasoa">✨ TONGASOA ✨</div>
             <div class="welcome-sub">Miarahaba anareo !</div>
             <div class="team-image-container">
-                <!-- IMAGE DE L'ÉQUIPE - Remplacez le src par le chemin de votre image -->
                 <img class="team-photo" src="f40b0245-560b-4b16-9e83-c2ca79d7a22e.jfif" alt="Équipe Ndao Hihira">
             </div>
             <div class="image-caption">
                 📸 Notre équipe organisatrice
             </div>
             <div class="event-date">
-                <i>📅</i> Vendredi 28 Mars 2025 · 18H00
+                <span>📅</span> VENDREDI 28 MARS 2025 · 18H00
             </div>
         </div>
         <div class="thanks-message">
             <strong>❤️ MISAOTRA BETSAKA ! ❤️</strong><br>
-            Nous tenons à vous adresser nos sincères remerciements pour votre présence et votre soutien lors de notre cabaret <strong>Ndao Hihira hiaraka aminay</strong>.<br>
+            Nous tenons à vous adresser nos sincères remerciements pour votre présence et votre soutien lors de notre cabaret <strong>Ndao Hihira hiaraka aminay</strong> du <strong style="color:#b5622a">28 MARS 2025</strong>.<br>
             Votre participation a grandement contribué à la réussite de cet événement.<br>
             Grâce à vous, cette soirée a été un moment inoubliable, rempli de partage, de talent et de convivialité.
         </div>
     </div>
 
-    <!-- Options en bas qui montent (boutons) -->
+    <!-- Options en bas qui montent -->
     <div class="action-buttons">
         <div class="btn-option" data-panel="menuPanel">
             <i>🍽️</i> Plats du jour
         </div>
         <div class="btn-option" data-panel="programPanel">
-            <i>📅</i> Programme
+            <i>📅</i> Programme · 28 Mars
         </div>
         <div class="btn-option" data-panel="partnersPanel">
             <i>🤝</i> Partenaires
         </div>
     </div>
 
-    <!-- PANEL 1 : MENU (plats du jour) -->
+    <!-- PANEL 1 : MENU -->
     <div id="menuPanel" class="slide-panel panel-hidden">
         <div class="panel-title">🍛 Plats du jour</div>
         <div class="menu-list">
@@ -476,12 +479,12 @@
                 <div class="menu-desc">Beignet malgache, miel local, douceur du soir</div>
             </div>
         </div>
-        <div style="margin-top: 16px; font-size: 0.7rem; text-align: center; color: #d69c56;">✨ Menu spécial Cabaret · 28 Mars ✨</div>
+        <div style="margin-top: 16px; font-size: 0.7rem; text-align: center; color: #d69c56;">✨ Menu spécial Cabaret · 28 Mars 2025 ✨</div>
     </div>
 
-    <!-- PANEL 2 : PROGRAMME avec les horaires demandés -->
+    <!-- PANEL 2 : PROGRAMME 28 MARS -->
     <div id="programPanel" class="slide-panel panel-hidden">
-        <div class="panel-title">🎤 Programme · 28 Mars</div>
+        <div class="panel-title">🎤 Programme · 28 MARS 2025</div>
         <div class="program-step">
             <div class="time-badge">18H00 - 18H10</div>
             <div class="program-desc">
@@ -518,44 +521,40 @@
             </div>
         </div>
         <div style="background:#fcf1e4; border-radius: 30px; padding: 12px; margin-top: 16px; text-align:center; font-size:0.8rem;">
-            🎶 <strong>Ndao Hihira hiaraka aminay</strong> — Une soirée de partage et de talents<br>
-            📅 Vendredi 28 Mars 2025 | 18H00 - 20H00
+            🎶 <strong>Ndao Hihira hiaraka aminay</strong><br>
+            📅 <strong style="color:#b5622a">VENDREDI 28 MARS 2025</strong> · 18H00 - 20H00<br>
+            Une soirée de partage et de talents
         </div>
     </div>
 
-    <!-- PANEL 3 : PARTENAIRES (5 logos avec images) -->
+    <!-- PANEL 3 : PARTENAIRES -->
     <div id="partnersPanel" class="slide-panel panel-hidden">
         <div class="panel-title">🤝 Nos partenaires</div>
         <div class="partners-grid">
-            <!-- Partenaire 1 -->
             <div class="partner-item">
                 <div class="partner-logo">
                     <img src="f756233f-6933-456e-ba48-e244b64c376b.jfif" alt="Resto DUO">
                 </div>
                 <div class="partner-name">Resto DUO</div>
             </div>
-            <!-- Partenaire 2 -->
             <div class="partner-item">
                 <div class="partner-logo">
                     <img src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" alt="enfi">
                 </div>
                 <div class="partner-name">enfi</div>
             </div>
-            <!-- Partenaire 3 -->
             <div class="partner-item">
                 <div class="partner-logo">
                     <img src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" alt="F.I.A.VA.MA">
                 </div>
                 <div class="partner-name">F.I.A.VA.MA</div>
             </div>
-            <!-- Partenaire 4 -->
             <div class="partner-item">
                 <div class="partner-logo">
                     <img src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" alt="JO. ANDREW">
                 </div>
                 <div class="partner-name">JO. ANDREW</div>
             </div>
-            <!-- Partenaire 5 -->
             <div class="partner-item">
                 <div class="partner-logo">
                     <img src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" alt="FAH SOUND">
@@ -572,20 +571,18 @@
     <div class="credit-footer">
         <span>✨ Équipe organisatrice ✨</span><br>
         <strong>M1010JSS1 G2</strong><br>
-        <span style="font-size: 0.7rem;">Cabaret Ndao Hihira — 28 Mars 2025 — Fièrement organisé pour vous</span>
+        <span style="font-size: 0.7rem;">Cabaret Ndao Hihira · 28 Mars 2025 · Fièrement organisé pour vous</span>
     </div>
 </div>
 
 <script>
     (function() {
-        // Récupération des panneaux et des boutons
         const menuPanel = document.getElementById('menuPanel');
         const programPanel = document.getElementById('programPanel');
         const partnersPanel = document.getElementById('partnersPanel');
         
         const allPanels = [menuPanel, programPanel, partnersPanel];
         
-        // fermer tous les panneaux
         function hideAllPanels() {
             allPanels.forEach(panel => {
                 if (panel) {
@@ -595,7 +592,6 @@
             });
         }
         
-        // afficher un panel spécifique avec animation smooth
         function showPanel(panelToShow) {
             if (!panelToShow) return;
             const isCurrentlyVisible = !panelToShow.classList.contains('panel-hidden');
@@ -612,7 +608,6 @@
             }
         }
         
-        // gestion des clics sur les boutons
         const btnMenu = document.querySelector('[data-panel="menuPanel"]');
         const btnProgram = document.querySelector('[data-panel="programPanel"]');
         const btnPartners = document.querySelector('[data-panel="partnersPanel"]');
