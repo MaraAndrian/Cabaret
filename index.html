@@ -424,23 +424,6 @@
             background: rgba(0, 0, 0, 0.8);
         }
 
-        .zoom-modal-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            font-size: 1rem;
-            font-weight: 500;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 16px;
-            margin: 0 auto;
-            width: fit-content;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-        }
-
         .credit-footer {
             text-align: center;
             margin-top: 38px;
@@ -493,10 +476,6 @@
                 font-size: 30px;
                 width: 40px;
                 height: 40px;
-            }
-            .zoom-modal-caption {
-                font-size: 0.8rem;
-                bottom: 10px;
             }
         }
     </style>
@@ -646,31 +625,31 @@
     <div id="partnersPanel" class="slide-panel panel-hidden">
         <div class="panel-title">🤝 Nos partenaires</div>
         <div class="partners-grid">
-            <div class="partner-item" data-img-src="f756233f-6933-456e-ba48-e244b64c376b.jfif" data-name="Resto DUO">
+            <div class="partner-item" data-img-src="f756233f-6933-456e-ba48-e244b64c376b.jfif">
                 <div class="partner-logo">
                     <img src="f756233f-6933-456e-ba48-e244b64c376b.jfif" alt="Resto DUO">
                 </div>
                 <div class="partner-name">Resto DUO</div>
             </div>
-            <div class="partner-item" data-img-src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" data-name="enfi">
+            <div class="partner-item" data-img-src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif">
                 <div class="partner-logo">
                     <img src="e0926d79-13d2-46e0-ae39-5cb5ff65094e.jfif" alt="enfi">
                 </div>
                 <div class="partner-name">enfi</div>
             </div>
-            <div class="partner-item" data-img-src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" data-name="F.I.A.VA.MA">
+            <div class="partner-item" data-img-src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif">
                 <div class="partner-logo">
                     <img src="9bd1b710-8be1-4cc6-8fe8-06a65c87e8ed.jfif" alt="F.I.A.VA.MA">
                 </div>
                 <div class="partner-name">F.I.A.VA.MA</div>
             </div>
-            <div class="partner-item" data-img-src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" data-name="JO. ANDREW">
+            <div class="partner-item" data-img-src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif">
                 <div class="partner-logo">
                     <img src="4476326f-f174-4852-9ae8-5fb9a36230b2.jfif" alt="JO. ANDREW">
                 </div>
                 <div class="partner-name">JO. ANDREW</div>
             </div>
-            <div class="partner-item" data-img-src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" data-name="FAH SOUND">
+            <div class="partner-item" data-img-src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif">
                 <div class="partner-logo">
                     <img src="69bb4d7e-d4ac-404e-80fb-05e21c2847e8.jfif" alt="FAH SOUND">
                 </div>
@@ -689,12 +668,11 @@
     </div>
 </div>
 
-<!-- Modal de zoom pour les images des partenaires -->
+<!-- Modal de zoom pour les images des partenaires (sans légende) -->
 <div id="zoomModal" class="zoom-modal">
     <div class="zoom-modal-close">&times;</div>
     <div class="zoom-modal-content">
         <img id="zoomImage" class="zoom-modal-img" src="" alt="Logo partenaire">
-        <div id="zoomCaption" class="zoom-modal-caption"></div>
     </div>
 </div>
 
@@ -757,7 +735,6 @@
         // Gestion du zoom pour les images des partenaires
         const zoomModal = document.getElementById('zoomModal');
         const zoomImage = document.getElementById('zoomImage');
-        const zoomCaption = document.getElementById('zoomCaption');
         const zoomClose = document.querySelector('.zoom-modal-close');
         
         // Fonction pour ouvrir le modal avec l'image cliquée
