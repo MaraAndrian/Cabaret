@@ -93,6 +93,12 @@
             display: inline-block;
             margin: 8px auto 8px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .team-image-container:hover {
+            transform: scale(1.02);
         }
 
         .team-photo {
@@ -102,11 +108,7 @@
             border-radius: 28px;
             display: block;
             object-fit: cover;
-            transition: transform 0.2s ease;
-        }
-
-        .team-photo:hover {
-            transform: scale(1.01);
+            pointer-events: none;
         }
 
         .image-caption {
@@ -118,6 +120,7 @@
             display: inline-block;
             padding: 5px 16px;
             border-radius: 40px;
+            cursor: pointer;
         }
 
         .thanks-message {
@@ -217,41 +220,53 @@
             color: #4f321b;
         }
 
+        /* Nouveau style pour le menu - stylé et élégant */
         .menu-list {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 20px;
         }
 
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px dashed #eedbbc;
-            padding-bottom: 10px;
-            flex-wrap: wrap;
+        .menu-card {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e8 100%);
+            border-radius: 28px;
+            padding: 18px 20px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0e0ca;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
         }
 
-        .dish-name {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #754e2c;
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #e2a14e, #b5622a);
+            border-radius: 4px 0 0 4px;
         }
 
-        .dish-price {
+        .menu-card:hover {
+            transform: translateX(4px);
+            border-color: #e2a14e;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .dish-name-styled {
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #b5622a;
-            background: #fff1e0;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            color: #4a2a1a;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .menu-desc {
-            font-size: 0.75rem;
-            color: #b68148;
-            margin-top: 4px;
-            width: 100%;
+        .dish-icon {
+            font-size: 1.8rem;
         }
 
         .program-step {
@@ -477,6 +492,15 @@
                 width: 40px;
                 height: 40px;
             }
+            .dish-name-styled {
+                font-size: 1rem;
+            }
+            .dish-icon {
+                font-size: 1.5rem;
+            }
+            .menu-card {
+                padding: 14px 16px;
+            }
         }
     </style>
 </head>
@@ -486,16 +510,16 @@
         <div class="hero-section">
             <div class="tongasoa">✨ TONGASOA ✨</div>
             <div class="welcome-sub">Miarahaba anareo !</div>
-            <div class="team-image-container">
+            <div class="team-image-container" id="teamImageContainer">
                 <img class="team-photo" src="f40b0245-560b-4b16-9e83-c2ca79d7a22e.jfif" alt="Équipe Ndao Hihira">
             </div>
-            <div class="image-caption">
-                📸 Notre équipe organisatrice
+            <div class="image-caption" id="teamImageCaption">
+                📸 Notre équipe organisatrice (Cliquez pour agrandir)
             </div>
         </div>
         <div class="thanks-message">
             <strong>❤️ MISAOTRA BETSAKA ! ❤️</strong><br>
-            Nous tenons à vous adresser nos sincères remerciements pour votre présence et votre soutien lors de notre cabaret <strong>Ndao Hihira hiaraka aminay</strong> du <strong>28 Mars 2025</strong>.<br>
+            Nous tenons à vous adresser nos sincères remerciements pour votre présence et votre soutien lors de notre cabaret <strong>Ndao Hihira hiaraka aminay</strong> du <strong>28 Mars 2026</strong>.<br>
             Votre participation a grandement contribué à la réussite de cet événement.<br>
             Grâce à vous, cette soirée a été un moment inoubliable, rempli de partage, de talent et de convivialité.
         </div>
@@ -524,52 +548,44 @@
         </div>
     </div>
 
-    <!-- PANEL 1 : MENU -->
+    <!-- PANEL 1 : MENU - Nouveaux plats stylés sans prix -->
     <div id="menuPanel" class="slide-panel panel-hidden">
-        <div class="panel-title">🍛 Plats du jour</div>
+        <div class="panel-title">🍛 Plats du jour · Au choix</div>
         <div class="menu-list">
-            <div>
-                <div class="menu-item">
-                    <span class="dish-name">Ravitoto sy henakisoa</span>
-                    <span class="dish-price">12 000 Ar</span>
+            <div class="menu-card">
+                <div class="dish-name-styled">
+                    <span class="dish-icon">🍗</span>
+                    Croquant de poulet aux sésames sauce miel
                 </div>
-                <div class="menu-desc">Feuilles de manioc pilées, poitrine fumée, épices douces</div>
             </div>
-            <div>
-                <div class="menu-item">
-                    <span class="dish-name">Romazava vary</span>
-                    <span class="dish-price">10 000 Ar</span>
+            <div class="menu-card">
+                <div class="dish-name-styled">
+                    <span class="dish-icon">🍝</span>
+                    Spaghetti carbonara
                 </div>
-                <div class="menu-desc">Bœuf brésilienne, brèdes mafana, accompagné de riz parfumé</div>
             </div>
-            <div>
-                <div class="menu-item">
-                    <span class="dish-name">Akoho sy voanio</span>
-                    <span class="dish-price">11 500 Ar</span>
+            <div class="menu-card">
+                <div class="dish-name-styled">
+                    <span class="dish-icon">🥩</span>
+                    Steak grillé
                 </div>
-                <div class="menu-desc">Poulet mijoté au lait de coco, gingembre et combava</div>
             </div>
-            <div>
-                <div class="menu-item">
-                    <span class="dish-name">Lasary ananas & mangahazo</span>
-                    <span class="dish-price">4 500 Ar</span>
+            <div class="menu-card">
+                <div class="dish-name-styled">
+                    <span class="dish-icon">🍲</span>
+                    Soupe Jarret
                 </div>
-                <div class="menu-desc">Salade épicée d'ananas et de manioc croustillant</div>
-            </div>
-            <div>
-                <div class="menu-item">
-                    <span class="dish-name">Mofo gasy & miel</span>
-                    <span class="dish-price">3 000 Ar</span>
-                </div>
-                <div class="menu-desc">Beignet malgache, miel local, douceur du soir</div>
             </div>
         </div>
-        <div style="margin-top: 16px; font-size: 0.7rem; text-align: center; color: #d69c56;">✨ Menu spécial Cabaret · 28 Mars ✨</div>
+        <div style="margin-top: 20px; font-size: 0.7rem; text-align: center; color: #d69c56; padding: 12px; background: #fef5e6; border-radius: 28px;">
+            ✨ Menu spécial Cabaret · 28 Mars 2026 ✨<br>
+            <span style="font-size: 0.65rem;">Un plat au choix, servi avec accompagnement</span>
+        </div>
     </div>
 
     <!-- PANEL 2 : PROGRAMME -->
     <div id="programPanel" class="slide-panel panel-hidden">
-        <div class="panel-title">🎤 Programme · 28 Mars 2025</div>
+        <div class="panel-title">🎤 Programme · 28 Mars 2026</div>
         <div class="program-step">
             <div class="time-badge">18H00 - 18H10</div>
             <div class="program-desc">
@@ -581,7 +597,6 @@
             <div class="time-badge">18H10 - 18H45</div>
             <div class="program-desc">
                 <strong>🎵 Prestation 1</strong>
-                Groupe Vako-drazana — Hira gasy traditionnelle et rythmes malgaches
             </div>
         </div>
         <div class="program-step">
@@ -595,14 +610,13 @@
             <div class="time-badge">19H00 - 19H30</div>
             <div class="program-desc">
                 <strong>🎤 Prestation 2</strong>
-                DJ Niavo — Mix live et ambiance électrisante
             </div>
         </div>
         <div class="program-step">
             <div class="time-badge">19H30 - 20H00</div>
             <div class="program-desc">
                 <strong>🎙️ Prestation 3 (Open Mic)</strong>
-                Scène ouverte aux talents : chanteurs, poètes, humoristes — Inscription sur place
+                Scène ouverte aux talents : chanteurs et musiciens — Inscription sur place
             </div>
         </div>
         <div style="background:#fcf1e4; border-radius: 30px; padding: 12px; margin-top: 16px; text-align:center; font-size:0.8rem;">
@@ -617,7 +631,7 @@
                     <circle cx="16" cy="15" r="1"></circle>
                     <circle cx="8" cy="15" r="1"></circle>
                 </svg>
-            </span> Vendredi 28 Mars 2025 · 18H00 - 20H00
+            </span> Vendredi 28 Mars 2026 · 18H00 - 20H00
         </div>
     </div>
 
@@ -664,15 +678,15 @@
     <div class="credit-footer">
         <span>✨ Équipe organisatrice ✨</span><br>
         <strong>M1010JSS1 G2</strong><br>
-        <span style="font-size: 0.7rem;">Cabaret Ndao Hihira · 28 Mars 2025 · Fièrement organisé pour vous</span>
+        <span style="font-size: 0.7rem;">Cabaret Ndao Hihira · 28 Mars 2026 · Fièrement organisé pour vous</span>
     </div>
 </div>
 
-<!-- Modal de zoom pour les images des partenaires (sans légende) -->
+<!-- Modal de zoom pour les images -->
 <div id="zoomModal" class="zoom-modal">
     <div class="zoom-modal-close">&times;</div>
     <div class="zoom-modal-content">
-        <img id="zoomImage" class="zoom-modal-img" src="" alt="Logo partenaire">
+        <img id="zoomImage" class="zoom-modal-img" src="" alt="Image agrandie">
     </div>
 </div>
 
@@ -732,25 +746,42 @@
             });
         }
         
-        // Gestion du zoom pour les images des partenaires
+        // Gestion du zoom pour les images
         const zoomModal = document.getElementById('zoomModal');
         const zoomImage = document.getElementById('zoomImage');
         const zoomClose = document.querySelector('.zoom-modal-close');
         
-        // Fonction pour ouvrir le modal avec l'image cliquée
         function openZoom(imgSrc) {
             zoomImage.src = imgSrc;
             zoomModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
-        // Fonction pour fermer le modal
         function closeZoom() {
             zoomModal.classList.remove('active');
             document.body.style.overflow = '';
         }
         
-        // Ajouter les écouteurs d'événements sur chaque partenaire
+        // Zoom pour l'image d'accueil
+        const teamImageContainer = document.getElementById('teamImageContainer');
+        const teamImageCaption = document.getElementById('teamImageCaption');
+        const teamImageSrc = "f40b0245-560b-4b16-9e83-c2ca79d7a22e.jfif";
+        
+        if (teamImageContainer) {
+            teamImageContainer.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openZoom(teamImageSrc);
+            });
+        }
+        
+        if (teamImageCaption) {
+            teamImageCaption.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openZoom(teamImageSrc);
+            });
+        }
+        
+        // Zoom pour les logos des partenaires
         const partnerItems = document.querySelectorAll('.partner-item');
         partnerItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -762,12 +793,10 @@
             });
         });
         
-        // Fermer le modal au clic sur le bouton de fermeture
         if (zoomClose) {
             zoomClose.addEventListener('click', closeZoom);
         }
         
-        // Fermer le modal au clic sur l'arrière-plan
         if (zoomModal) {
             zoomModal.addEventListener('click', (e) => {
                 if (e.target === zoomModal) {
@@ -776,14 +805,13 @@
             });
         }
         
-        // Fermer le modal avec la touche Echap
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && zoomModal.classList.contains('active')) {
                 closeZoom();
             }
         });
         
-        console.log("Site cabaret prêt — Ndao Hihira — 28 Mars 2025 — Zoom partenaires activé");
+        console.log("Site cabaret prêt — Ndao Hihira — 28 Mars 2026");
     })();
 </script>
 </body>
